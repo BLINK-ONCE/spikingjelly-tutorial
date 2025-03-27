@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  torch-cuda-windows:
+    build: 
+      context: .
+      dockerfile: Dockerfile.win.cuda
+    container_name: jellycuda-11-8
+    volumes:
+      - .:/pytorch-project
+    stdin_open: true
+    tty: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    runtime: nvidia

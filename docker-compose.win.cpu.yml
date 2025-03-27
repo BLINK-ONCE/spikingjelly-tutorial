@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  torch-cuda-windows:
+    build: 
+      context: .
+      dockerfile: Dockerfile.win.cpu
+    container_name: jellycpu
+    volumes:
+      - .:/pytorch-project
+    stdin_open: true
+    tty: true
